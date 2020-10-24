@@ -22,5 +22,5 @@ python main.py [csv_file_name] [x_axis_name] [y_axis_name] [output_file_name]
 x_axis,y_axis_1,y_axis_2,y_axis_3
 0,1,2,3
 0,1,2,3
-```
+```
 詳しくは[example.csv](https://github.com/MotoShin/graph-creator/blob/master/example/example.csv)を参照
