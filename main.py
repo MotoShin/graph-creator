@@ -17,15 +17,25 @@ if __name__ == '__main__':
     csv_file_path = 'example/example.csv'
     x_axis_name = 'x'
     y_axis_name = 'y'
+    output_file_name = 'img.png'
 
     if len(sys.argv) == 2:
-        # file name
+        # csv file name
         csv_file_path = sys.argv[1]
+    elif len(sys.argv) == 3:
+        # csv file name and output file name
+        csv_file_path = sys.argv[1]
+        output_file_name = sys.argv[2]
     elif len(sys.argv) == 4:
         # axis name value
         csv_file_path = sys.argv[1]
         x_axis_name = sys.argv[2]
         y_axis_name = sys.argv[3]
+    elif len(sys.argv) == 5:
+        csv_file_path = sys.argv[1]
+        x_axis_name = sys.argv[2]
+        y_axis_name = sys.argv[3]
+        output_file_name = sys.argv[4]
 
     df = pd.read_csv(csv_file_path)
 
@@ -41,4 +51,4 @@ if __name__ == '__main__':
         ax.set_xlabel(x_axis_name)
         ax.set_ylabel(y_axis_name)
         ax.legend()
-        fig.savefig("output/img.png")
+        fig.savefig("output/"+output_file_name)
