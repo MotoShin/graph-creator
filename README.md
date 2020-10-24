@@ -1,4 +1,6 @@
 # graph-creator
+[Science Plots](https://pypi.org/project/SciencePlots/)を簡単に使えるようにしたやつ。（自分用）
+
 ## 2軸のグラフの作成 (x-y)
 ### 実行方法
 以下のように実行する
