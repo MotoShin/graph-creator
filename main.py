@@ -7,19 +7,22 @@ def df_to_numpy(df):
     """
     pandas dataframe -> numpy array (x and any y values)
     """
-    row, col = df.shape
+    _row, col = df.shape
     x = df.iloc[:,1].values
     y_values = df.iloc[:,2:col].values
     return x, y_values
 
 if __name__ == '__main__':
+    # default value
     csv_file_path = 'example/example.csv'
     x_axis_name = 'x'
     y_axis_name = 'y'
 
     if len(sys.argv) == 2:
+        # file name
         csv_file_path = sys.argv[1]
     elif len(sys.argv) == 4:
+        # axis name value
         csv_file_path = sys.argv[1]
         x_axis_name = sys.argv[2]
         y_axis_name = sys.argv[3]
