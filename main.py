@@ -8,8 +8,8 @@ def df_to_numpy(df):
     pandas dataframe -> numpy array (x and any y values)
     """
     _row, col = df.shape
-    x = df.iloc[:,1].values
-    y_values = df.iloc[:,2:col].values
+    x = df.iloc[:,0].values
+    y_values = df.iloc[:,1:col].values
     return x, y_values
 
 if __name__ == '__main__':
@@ -29,7 +29,7 @@ if __name__ == '__main__':
 
     df = pd.read_csv(csv_file_path)
 
-    column_name = df.columns[2:].values
+    column_name = df.columns[1:].values
     x, y_values = df_to_numpy(df)
     y_values_trans = y_values.T
 

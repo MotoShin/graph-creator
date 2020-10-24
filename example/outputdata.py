@@ -12,4 +12,4 @@ df = pd.DataFrame(lst, columns=cols)
 
 print(df)
 
-df.to_csv('example.csv')
+df.to_csv('example.csv', index=False)
