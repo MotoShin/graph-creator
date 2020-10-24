@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+import sys
 
 def df_to_numpy(df):
     """
@@ -12,7 +13,18 @@ def df_to_numpy(df):
     return x, y_values
 
 if __name__ == '__main__':
-    df = pd.read_csv('example-data/example.csv')
+    csv_file_path = 'example/example.csv'
+    x_axis_name = 'x'
+    y_axis_name = 'y'
+
+    if len(sys.argv) == 2:
+        csv_file_path = sys.argv[1]
+    elif len(sys.argv) == 4:
+        csv_file_path = sys.argv[1]
+        x_axis_name = sys.argv[2]
+        y_axis_name = sys.argv[3]
+
+    df = pd.read_csv(csv_file_path)
 
     column_name = df.columns[2:].values
     x, y_values = df_to_numpy(df)
@@ -23,5 +35,7 @@ if __name__ == '__main__':
         for i in range(len(y_values_trans)):
             line, = ax.plot(x, y_values_trans[i])
             line.set_label(column_name[i])
+        ax.set_xlabel(x_axis_name)
+        ax.set_ylabel(y_axis_name)
         ax.legend()
         fig.savefig("output/img.png")
