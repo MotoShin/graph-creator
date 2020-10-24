@@ -51,4 +51,4 @@ if __name__ == '__main__':
         ax.set_xlabel(x_axis_name)
         ax.set_ylabel(y_axis_name)
         ax.legend()
-        fig.savefig("output/"+output_file_name)
+        fig.savefig("output/"+output_file_name, dpi=300)
