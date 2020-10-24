@@ -43,7 +43,7 @@ if __name__ == '__main__':
     x, y_values = df_to_numpy(df)
     y_values_trans = y_values.T
 
-    with plt.style.context(['science', 'ieee', 'no-latex']):
+    with plt.style.context(['science', 'no-latex']):
         fig, ax = plt.subplots(facecolor="w")
         for i in range(len(y_values_trans)):
             line, = ax.plot(x, y_values_trans[i])
