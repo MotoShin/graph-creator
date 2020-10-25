@@ -3,19 +3,18 @@
 
 ## 2軸のグラフの作成 (x-y)
 ### 実行方法
-以下のように実行する
+以下のように実行すると対話モードでアプリケーションが立ち上がるので指示通り入力していってください。
 ```
-# 対象のcsvのパスを指定する
-python main.py [csv_file_path]
-
-# 対象のcsvのパスを指定して画像名も指定する
-python main.py [csv_file_path] [output_file_name]
-
-# 軸の名前を指定
-python main.py [csv_file_name] [x_axis_name] [y_axis_name]
-
-# 全部盛り
-python main.py [csv_file_name] [x_axis_name] [y_axis_name] [output_file_name]
+python main.py
+```
+全ての入力に対して入力無しにするとdefault値が全て入ります。
+デファルト値は以下の通り。
+```
+Please select a mode (1: 2-axis graph): 1
+Input a csv file path: example/example.csv
+Input a x axis name: x
+Input a y axis name: y
+Input a output image file name: img.png
 ```
 
 ### csvファイル形式
