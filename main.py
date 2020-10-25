@@ -1,16 +1,33 @@
 import matplotlib.pyplot as plt
-import pandas as pd
 import numpy as np
 import sys
 
-def df_to_numpy(df):
-    """
-    pandas dataframe -> numpy array (x and any y values)
-    """
-    _row, col = df.shape
-    x = df.iloc[:,0].values
-    y_values = df.iloc[:,1:col].values
-    return x, y_values
+from functional.csv2numpy import CsvToNumpy
+
+class Application:
+    def __init__(
+        self,
+        csv_file_path='example/example.csv',
+        x_axis_name='x',
+        y_axis_name='y',
+        output_file_name='img.png'):
+        self.csv2numpy = CsvToNumpy(csv_file_path)
+        self.x_axis_name = x_axis_name
+        self.y_axis_name = y_axis_name
+        self.output_file_name = output_file_name
+    
+    def run(self):
+        column_name, x, y_values = self.csv2numpy.read_csv()
+        y_values_trans = y_values.T
+        with plt.style.context(['science', 'no-latex']):
+            fig, ax = plt.subplots(facecolor="w")
+            for i in range(len(y_values_trans)):
+                line, = ax.plot(x, y_values_trans[i])
+                line.set_label(column_name[i])
+            ax.set_xlabel(self.x_axis_name)
+            ax.set_ylabel(self.y_axis_name)
+            ax.legend()
+            fig.savefig("output/"+self.output_file_name, dpi=300)
 
 if __name__ == '__main__':
     # default value
@@ -37,18 +54,10 @@ if __name__ == '__main__':
         y_axis_name = sys.argv[3]
         output_file_name = sys.argv[4]
 
-    df = pd.read_csv(csv_file_path)
-
-    column_name = df.columns[1:].values
-    x, y_values = df_to_numpy(df)
-    y_values_trans = y_values.T
-
-    with plt.style.context(['science', 'no-latex']):
-        fig, ax = plt.subplots(facecolor="w")
-        for i in range(len(y_values_trans)):
-            line, = ax.plot(x, y_values_trans[i])
-            line.set_label(column_name[i])
-        ax.set_xlabel(x_axis_name)
-        ax.set_ylabel(y_axis_name)
-        ax.legend()
-        fig.savefig("output/"+output_file_name, dpi=300)
+    app = Application(
+        csv_file_path=csv_file_path,
+        x_axis_name=x_axis_name,
+        y_axis_name=y_axis_name,
+        output_file_name=output_file_name)
+    
+    app.run()
