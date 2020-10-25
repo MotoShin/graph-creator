@@ -3,6 +3,7 @@ import numpy as np
 import sys
 
 from functional.csv2numpy import CsvToNumpy
+from functional.numpy2img import NumpyToImg
 
 class Application:
     def __init__(
@@ -18,16 +19,8 @@ class Application:
     
     def run(self):
         column_name, x, y_values = self.csv2numpy.read_csv()
-        y_values_trans = y_values.T
-        with plt.style.context(['science', 'no-latex']):
-            fig, ax = plt.subplots(facecolor="w")
-            for i in range(len(y_values_trans)):
-                line, = ax.plot(x, y_values_trans[i])
-                line.set_label(column_name[i])
-            ax.set_xlabel(self.x_axis_name)
-            ax.set_ylabel(self.y_axis_name)
-            ax.legend()
-            fig.savefig("output/"+self.output_file_name, dpi=300)
+        numpy2img = NumpyToImg(self.x_axis_name, self.y_axis_name, self.output_file_name, column_name, x, y_values)
+        numpy2img.create_img()
 
 if __name__ == '__main__':
     # default value
