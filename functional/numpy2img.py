@@ -1,17 +1,15 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+from functional.domain.input import InteractiveInput
+
+
 class NumpyToImg:
-    def __init__(self, x_axis_name, y_axis_name, output_file_name, column_name, x, y_values):
+    def __init__(self, data: InteractiveInput):
         """
         constructor
         """
-        self.x_axis_name = x_axis_name
-        self.y_axis_name = y_axis_name
-        self.output_file_name = output_file_name
-        self.column_name = column_name
-        self.x = x
-        self.y_values = y_values
+        self.x_axis_name, self.y_axis_name, self.output_file_name, self.column_name, self.x, self.y_values = data.get()
 
     def create_img(self):
         """

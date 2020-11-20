@@ -19,3 +19,11 @@ class CsvToNumpy:
         y_values = self.df.iloc[:,1:col].values
 
         return column_name, x, y_values
+
+    def read_csv_with_moving_average(self, term):
+        """
+        read csv and add moving average
+        return column name list, x value list and y values list
+        """
+        self.df['move_average'] = self.df.rolling(window=rolling).mean()
+        return self.read_csv()
