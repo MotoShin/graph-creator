@@ -1,3 +1,10 @@
 .python-version
 .vscode/
 __pycache__
+
+/output/*
+!/output/img.png
+
+/example/*
+!/example/example.csv
+!/example/example2.csv
