@@ -1,5 +1,5 @@
-import numpy as np
 import matplotlib.pyplot as plt
+import scienceplots
 
 from functional.domain.input import InteractiveInput
 
