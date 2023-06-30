@@ -25,6 +25,6 @@ class CsvToNumpy:
         read csv and add moving average
         return column name list, x value list and y values list
         """
-        series = self.df['reward']
-        self.df['move_average'] = series.rolling(window=term).mean()
+        series = self.df
+        self.df = series.rolling(window=term).mean()
         return self.read_csv()
