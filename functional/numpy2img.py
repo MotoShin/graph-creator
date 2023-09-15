@@ -16,7 +16,7 @@ class NumpyToImg:
         create image
         """
         y_values_trans = self.y_values.T
-        with plt.style.context(['science', 'no-latex']):
+        with plt.style.context(['science']):
             fig, ax = plt.subplots(facecolor="w")
             for i in range(len(y_values_trans)):
                 line, = ax.plot(self.x, y_values_trans[i])

@@ -13,7 +13,11 @@ RUN apt-get -y update && apt-get upgrade -qqy && apt-get -y install \
     sudo \
     bash \
     git \
-    vim
+    vim \
+    dvipng \
+    texlive-latex-extra \
+    texlive-fonts-recommended \
+    cm-super
 
 RUN pip install --upgrade setuptools
 
